@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de CPF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="titulo">VALIDADOR DE CPF</div>
+    <p class="instrucao">Digite apenas números, sem pontos ou traços.</p>
+
+    <form method="POST">
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <input type="text" name="cpf" placeholder="INSIRA UM CPF..." maxlength="11">
+                <button type="submit">VALIDAR</button>
+            </div>
+        </form>
+
+        {% if resultado %}
+            <div class="resultado {% if 'VÁLIDO' in resultado and 'INVÁLIDO' not in resultado %}valido{% else %}invalido{% endif %}">
+                {{ resultado }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
